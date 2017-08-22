@@ -3,3 +3,11 @@ Assignment 1:
 Create an html page and display all the data in an li fetched from this url
 https://jsonplaceholder.typicode.com/photos
 publish only the title attribute of json object in li
+Comments:The approach used is very good and clean but ek html ki ul ko update krne ke liye bar bar function call 
+krna is not good so instead of calling a function make a gloabal object and store the recieved json and and create a loop 
+of ul.createchild and append the data.
+the reason is browser works as a stack so if one function is executing others will have to wait so bahut calls lag jayengi to page ka baki function wait
+me reh jaayenge 
+
+Assignment 2:
+now bring the album and photos data and create ul according to album id and put  photos of same album id in it
