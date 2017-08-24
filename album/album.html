@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Album DB</title>
+	<link rel="stylesheet" href="styles.css" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css">
+</head>
+<body>
+<div id="mainContainer">
+<div id="header">
+<LABEL for="albumName">Album Name</LABEL>	<input type="text" name="albumName" value="">
+</div>
+<div id="content">
+
+	<div id="albumSubHeader">
+		<span id="photosLabel">
+			<label>Photos</label>
+		</span>
+		<span id="photosAdd">
+			<input id="myBtn" type="button" name="photosAdd" value="+">
+			<div id="myModal" class="modal">
+			  <div class="modal-content">
+			    <div id="photoPopUpHeader"><span><label>ADD Photos</label></span> <span class="close">&times;</span></div>
+			    <div id="photoPopUpContent">
+			    	<div><label for="photoName">Name:</label><input type="text" name="photoName"></div>
+			    	<div><label for="photoUrl">URL:</label><input type="text" name="photoUrl"></div>
+			    </div>
+			    <div id="photoPopUpFooter">
+			    	<span id="footerAlbumSave">
+			<input type="button" name="photoPopUpSave" value="Save">
+		</span>
+		<span id="footerAlbumCancel">
+			<input type="button" name="photoPopUpCancel" value="Cancel">
+		</span>
+			    </div>			  
+			    </div>
+
+				</div>
+		</span>
+	</div>
+	<ul id="populateData">
+						
+						
+		</ul>
+</div>
+<div id="footer">
+	<div id="footerAlbumSaveCancel">
+		<span id="footerAlbumSave">
+			<input type="button" name="footerAlbumSave" value="Save">
+		</span>
+		<span id="footerAlbumCancel">
+			<input type="button" name="footerAlbumCancel" value="Cancel">
+		</span>
+	</div>
+</div>
+
+</div>
+
+<script type="text/javascript" src="javascript.js"></script>
+</body>
+</html>

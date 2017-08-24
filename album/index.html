@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Album DB</title>
+	<link rel="stylesheet" href="styles.css" />
+	
+</head>
+<body>
+<div id="mainContainer">
+<div id="header">
+	<div class="add">
+		<span id="photosAdd">
+			<input id="myBtn" type="button" name="Add" value="+">
+
+			    </div>
+
+				</div>
+		</span>
+	</div>
+</div>
+
+<div id="content">
+	<ul id="populateData">
+
+
+
+		</ul>
+</div>
+<div id="footer"></div>
+
+</div>
+<div id="myModal" class="modal">
+			  <div class="modal-content">
+			    <div id="photoPopUpHeader"><span><label>ADD Photo</label></span> <span class="close">&times;</span></div>
+			    <div id="photoPopUpContent">
+			    	<div><label for="photoName" >Photo Name:</label><input type="text" id="photoName" name="albumName"></div>
+			    	<div><label for="photoUrl"  >Url</label><input type="text" id="photoUrl" name="albumDesc"></div>
+			    </div>
+<div id="photoPopUpFooter">
+	<span id="footerAlbumSave">
+		<input type="button" id="photoSave" name="photoPopUpSave" value="Save">
+	</span>
+	<span id="footerAlbumCancel">
+		<input type="button" id="photoCancel" name="photoPopUpCancel" value="Cancel">
+	</span>
+</div>
+</div>
+</div>
+
+					<div id="myModalEdit" class="modal">
+									<input type="hidden" name="" id="photoToEdit" value="">
+								  <div class="modal-content">
+								    <div id="photoPopUpHeaderEdit"><span><label>Edit Photo</label></span> <span class="close">&times;</span></div>
+								    <div id="photoPopUpContentEdit">
+								    	<div><label for="photoName" >Photo Name:</label><input type="text" id="photoNameEdit" name="albumName"></div>
+								    	<div><label for="photoUrl"  >Url</label><input type="text" id="photoUrlEdit" name="albumDesc"></div>
+								    </div>
+								    <div id="photoPopUpFooterEdit">
+								    	<span id="footerAlbumSaveEdit">
+								<input type="button" id="photoSaveEdit" name="photoPopUpSave" value="Save">
+							</span>
+							<span id="footerAlbumCancelEdit">
+								<input type="button" id="photoCancelEdit" name="photoPopUpCancel" value="Cancel">
+							</span>
+					</div>
+				</div>
+				</div>
+<script src="./jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/js/materialize.min.js"></script>
+<script type="text/javascript" src="datapopulate.js"></script>
+
+</body>
+</html>

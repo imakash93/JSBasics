@@ -1,0 +1,206 @@
+body{
+    margin: 0px !important;
+    padding: 0px !important;
+}
+#mainContainer{
+        width: 70%;
+    margin: auto;
+}
+#header{
+    background:url(head.gif);
+    width: 100%;
+    text-align: center;
+    padding: 35px 0px;
+}
+#header input{
+           padding: 2px 26px;
+    font-size: 20px;
+    border-radius: 14px;
+    color: blueviolet;
+
+}
+#content{
+    background:url(back.jpg);
+    overflow: hidden;
+    padding-bottom: 10px;
+    width: 70%;
+    margin: 0 auto;
+}
+
+#populateData{
+        list-style-type: none;
+    width: 100%;
+    margin: 0 34px;
+
+
+}
+#populateData li{
+       float: left;
+   
+    border-radius: 4px;
+    width: 240px;
+    
+    margin-right: 12px;
+    margin-top: 50px;
+}
+#populateData li:hover{
+    box-shadow: 
+      
+}
+.liContainer{
+    width: 100%;
+    
+    border-radius: 4px;
+    overflow: hidden;
+    background-color: gray;
+}
+.liContainerHead{
+        width: 100%;
+    height: 12%;
+    overflow: hidden;
+    padding: 2px;
+    background: url(lihead.jpg);
+}
+.liContainerEditDelete{
+    width: 30%;
+    float: right;
+    margin-right: 20px;
+}
+.liContainerEdit{
+
+}
+.liContainerDelete{
+float: right;
+   
+}
+.liContainerBody{
+          width: 100%;
+    
+}
+.liContent{
+        width: 100%;
+   
+    overflow: hidden;
+}
+.liContent img{
+        width: 100%;
+    height: 72%;
+}
+.liContainerFooter{
+    height: 135px;
+            margin-top: -7px;
+    overflow: hidden;
+       overflow: hidden;
+    background: url(lifooter.jpg);
+    padding: 4px;
+}
+.liContainerFooterTitle{
+
+}
+.liContainerFooterNumberOfPics{
+
+}
+#footer{
+        background:url(foot.jpg);
+    width: 70%;
+    text-align: center;
+    padding: 30px 0px;
+    margin: 0 auto;
+
+}
+#albumSubHeader{
+        width: 100%;
+}
+#photosLabel{
+    font-size: 36px;
+}
+#photosAdd{
+        
+}
+
+
+#myBtn{
+    font-size: 29px;
+}
+
+/*popup starting*/
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4);
+}
+
+
+.modal-content {
+
+    margin: 15% auto;
+
+    border: 1px solid #888;
+    width: 45%;
+}
+
+
+.close {
+    color: red;
+    float: right;
+    font-size: 35px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#photoPopUpHeader{
+background: url(head.gif);
+}
+#photoPopUpContent{
+background: url(back.jpg);
+    padding: 70px;
+}
+#photoPopUpContent input{
+    float: right;
+}
+#photoPopUpFooter{
+background-color: grey;
+text-align: center;
+padding: 10px 0px;
+background: url(head.gif);
+}
+#myModal label{
+    font-size: 28px;
+    color: white;
+}
+/*popup ending*/
+
+input[type="button"]{
+    cursor: pointer;
+    border-radius: 10px;
+    font-size: 14px;
+}
+.form-holder{
+        width: 70%;
+    background: green;
+    margin: 0 auto;
+}
+#footer input{
+        margin-right: 50px;
+        font-size: 18px;
+    border-radius: 5px;
+    color: white;
+    background-color: darkgray;
+    
+}
+
+#addPhoto{
+        font-size: 18px;
+    border-radius: 5px;
+    color: white;
+    background-color: darkgray;
+    margin-right: 50px;
+}
