@@ -41,6 +41,7 @@ function saveNewphoto() {
 
 
 
+
 function addphoto() {
   debugger;
   window.location.href = window.location.href + "#createphoto";
@@ -88,6 +89,7 @@ function appendPhoto() {
   $("#populateData").append(ul_data);
   $('#myModal').hide();
 }
+
 
 
 

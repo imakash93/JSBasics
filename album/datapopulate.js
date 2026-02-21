@@ -1,35 +1,39 @@
 $(function () {
-  debugger;
-
-var btn = document.getElementById("myBtn");
+  var btn = document.getElementById("myBtn");
  var modal = document.getElementById('myModal');
 var btn = document.getElementById("myBtn");
 var span = document.getElementsByClassName("close")[0];
 
- var jason = 'https://jsonplaceholder.typicode.com';
+  var jason = 'https://jsonplaceholder.typicode.com';
   if (!localStorage.getItem("albumData")) {
-  var local = [];
-      $.ajax({
-        url: jason + '/albums',
-        method: 'GET',
-        async: false
-      }).then(function(data) {
-          var data = data.slice(0,7);
-          $.each(data, function(i, obj) {
-            $.ajax({
-              url: jason + '/albums/'+obj.id+'/photos',
-              method: 'GET'
-            }).then(function(photos) {
-              local.push({"albumInfo": data[i], "imgData": photos});
-
-              if (i+1 >= data.length) {
-                storeToLocal(local);
-                window.location.href = window.location.href ;
-              }
-            })
-          });
+    var local = [];
+    $.ajax({
+      url: jason + '/albums',
+      method: 'GET',
+      async: false
+    }).then(function(albums) {
+      var data = albums.slice(0, 7);
+      var pending = data.length;
+      if (pending === 0) {
+        storeToLocal(local);
+        window.location.href = window.location.href;
+        return;
+      }
+      data.forEach(function(albumInfo) {
+        $.ajax({
+          url: jason + '/albums/' + albumInfo.id + '/photos',
+          method: 'GET'
+        }).then(function(photos) {
+          local.push({ albumInfo: albumInfo, imgData: photos });
+          pending--;
+          if (pending === 0) {
+            storeToLocal(local);
+            window.location.href = window.location.href;
+          }
+        });
       });
-    }
+    });
+  }
 
 
   init();
@@ -67,8 +71,7 @@ function appendAlbumData() {
                <div class="liContainerHead">
                   <div class="liContainerEditDelete">
                     <span class="liContainerEdit">
-                      <input type="button" class="edit" name="liContainerEdit
-                      " value="E" >
+                      <input type="button" class="edit" name="liContainerEdit" value="E">
                     </span>
                     <span class="liContainerDelete">
                       <input type="button" onclick="deleteAlbum(${i}, this)" class="delete" id="del1" name="liContainerDelete" value="X">
@@ -209,35 +212,33 @@ function addphotosingle(){
 
 
 function saveNewAlbum() {
-  //debugger;
-  var imgData = {}
-  var arr = []
-  if ($('#albumName').val() == ""){
-    alert('Album Name Can not be empty');
-  } else {
-    var aData = {
-      "userId": localStorageDataTemp[localStorageDataTemp.length-1].albumInfo.id+1,
-      "id": localStorageDataTemp[localStorageDataTemp.length-1].albumInfo.id+1,
-      "title": $('#albumName').val()
-    }
-    $('#populateData li').each(function(index, el) {
-      imgData = {
-        "albumId": localStorageDataTemp[localStorageDataTemp.length-1].albumInfo.id+1,
-        "id": localStorageDataTemp[localStorageDataTemp.length-1].albumInfo.id+1,
-        "title": "reprehenderit est deserunt velit ipsam",
-        "url": $(this).find('img').attr('src'),
-        "thumbnailUrl": $(this).find('img').attr('src')
-      }
-      arr.push(imgData);
-    });
-
-    var localStorageData = JSON.parse(localStorage.getItem("albumData"));
-
-    localStorageData.push({"albumInfo": aData, "imgData": arr})
-    storeToLocal(localStorageData);
-
+  var imgData = {};
+  var arr = [];
+  if ($('#albumName').val() === "") {
+    alert('Album Name cannot be empty');
+    return;
   }
-
+  var localStorageData = JSON.parse(localStorage.getItem("albumData")) || [];
+  var nextId = localStorageData.length > 0
+    ? localStorageData[localStorageData.length - 1].albumInfo.id + 1
+    : 1;
+  var aData = {
+    "userId": nextId,
+    "id": nextId,
+    "title": $('#albumName').val()
+  };
+  $('#populateData li').each(function(index, el) {
+    imgData = {
+      "albumId": nextId,
+      "id": nextId + index,
+      "title": "reprehenderit est deserunt velit ipsam",
+      "url": $(this).find('img').attr('src'),
+      "thumbnailUrl": $(this).find('img').attr('src')
+    };
+    arr.push(imgData);
+  });
+  localStorageData.push({"albumInfo": aData, "imgData": arr});
+  storeToLocal(localStorageData);
 }
 
 function modelShow() {
@@ -288,48 +289,33 @@ function init(){
 }
 
 
-var localStorageDataTemp = JSON.parse(localStorage.getItem("albumData"));
-var temp;
-
 function deletePhoto(albumId, objIndex, el) {
-  //debugger;
-
-  if(localStorageDataTemp[albumId]['imgData'].length == 1){
-    alert("you can not delete the last photo");
-
+  var localStorageData = JSON.parse(localStorage.getItem("albumData"));
+  if (!localStorageData || !localStorageData[albumId]) return;
+  if (localStorageData[albumId]['imgData'].length === 1) {
+    alert("You cannot delete the last photo.");
+    return;
   }
-  if (confirm("Are You Sure you want to delete this image ?")){
-    //delete localStorageDataTemp[albumId]['imgData'].splice(objIndex,1);
+  if (confirm("Are You Sure you want to delete this image ?")) {
+    localStorageData[albumId]['imgData'].splice(objIndex, 1);
+    storeToLocal(localStorageData);
     $(el).closest('li').remove();
-    //localStorageDataTemp = localStorageDataTemp;
-    //temp = localStorageDataTemp;
   }
 }
 
 function deleteAlbum(objIndex, el) {
-  //debugger;
-  var localStorageDataTemp = JSON.parse(localStorage.getItem("albumData"));
-  console.log(localStorageDataTemp[objIndex]['imgData'].length);
+  var localStorageData = JSON.parse(localStorage.getItem("albumData"));
+  if (!localStorageData || !localStorageData[objIndex]) return;
 
-  if (confirm("Are You Sure you want to delete this Album ?")){
-    if(localStorageDataTemp[objIndex]['imgData'].length !==0){
-
-        alert("can not delete contain photos");
-        if(confirm("äre you sure u want to delete album with photos")){
-           var localStorageData = JSON.parse(localStorage.getItem("albumData"));
-    // console.log(localStorageData);
-    delete localStorageData.splice(objIndex,1);
-    console.log(localStorageData);
+  if (confirm("Are You Sure you want to delete this Album ?")) {
+    if (localStorageData[objIndex]['imgData'].length !== 0) {
+      if (!confirm("Are you sure you want to delete album with photos?")) {
+        return;
+      }
+    }
+    localStorageData.splice(objIndex, 1);
     $(el).closest('li').remove();
     storeToLocal(localStorageData);
-    console.log(localStorageData.length);
-    if (localStorageData.length == 0){
-      console.log('ok')
-    }
-        }
-  return;
-    }
-
   }
 }
 
@@ -342,7 +328,6 @@ function clearLocal() {
 }
 
 function editPhoto(el) {
-  debugger;
   var url = $(el).closest('li').find('img').attr('src');
   var name = $(el).closest('li').find('.title').text();
   var thiss = $(el).closest('li');
@@ -386,8 +371,6 @@ function saveData() {
   // }
   var localStorageData = JSON.parse(localStorage.getItem("albumData"));
   localStorageData[params[1]]['imgData'] = [];
-  debugger;
-  console.log("----------------------");
   var cAlbum = $('#populateData li:last-child .albumId').text();
   console.log(localStorageData[params[1]]['imgData']);
   $('#populateData li').each(function(index, el) {

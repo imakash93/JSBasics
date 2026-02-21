@@ -7,7 +7,7 @@ body{
     margin: auto;
 }
 #header{
-    background:url(head.gif);
+    background-color: #5a4a6a;
     width: 100%;
     text-align: center;
     padding: 35px 0px;
@@ -20,7 +20,7 @@ body{
 
 }
 #content{
-    background:url(back.jpg);
+    background-color: #e8e4e0;
     overflow: hidden;
     padding-bottom: 10px;
     width: 70%;
@@ -44,8 +44,7 @@ body{
     margin-top: 50px;
 }
 #populateData li:hover{
-    box-shadow: 
-      
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
 }
 .liContainer{
     width: 100%;
@@ -59,7 +58,7 @@ body{
     height: 12%;
     overflow: hidden;
     padding: 2px;
-    background: url(lihead.jpg);
+    background-color: #6b5b6b;
 }
 .liContainerEditDelete{
     width: 30%;
@@ -88,10 +87,9 @@ float: right;
 }
 .liContainerFooter{
     height: 135px;
-            margin-top: -7px;
+    margin-top: -7px;
     overflow: hidden;
-       overflow: hidden;
-    background: url(lifooter.jpg);
+    background-color: #5a5a5a;
     padding: 4px;
 }
 .liContainerFooterTitle{
@@ -101,7 +99,7 @@ float: right;
 
 }
 #footer{
-        background:url(foot.jpg);
+    background-color: #4a4a5a;
     width: 70%;
     text-align: center;
     padding: 30px 0px;
@@ -157,20 +155,19 @@ float: right;
 }
 
 #photoPopUpHeader{
-background: url(head.gif);
+    background-color: #5a4a6a;
 }
 #photoPopUpContent{
-background: url(back.jpg);
+    background-color: #e8e4e0;
     padding: 70px;
 }
 #photoPopUpContent input{
     float: right;
 }
 #photoPopUpFooter{
-background-color: grey;
-text-align: center;
-padding: 10px 0px;
-background: url(head.gif);
+    background-color: #5a4a6a;
+    text-align: center;
+    padding: 10px 0px;
 }
 #myModal label{
     font-size: 28px;
